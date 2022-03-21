@@ -5,8 +5,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const { default: mongoose } = require('mongoose');
-// const morgan = require('morgan');
-// const cors = require('cors');
+
 const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 
