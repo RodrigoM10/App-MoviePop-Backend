@@ -6,7 +6,7 @@ const { default: mongoose } = require('mongoose');
 // const morgan = require('morgan');
 // const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
-// const authRoutes = require('./routes/authRoutes');
+const authRoutes = require('./routes/authRoutes');
 
 // crear el servidor
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 
 //importar rutas
 app.use('/api/users', userRoutes);
-// app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes);
 
 // puerto y arranque del servidor
 app.listen(process.env.PORT || 4000, () => {

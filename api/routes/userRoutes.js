@@ -9,6 +9,7 @@ router.post(
         check('name', 'El nombre es obligatorio').not().isEmpty().isLength({ max: 30 }),
         check('email', 'Agrega un email valido').isEmail().isLength({ max: 30 }),
         check('password', 'El password debe tener mínimo de 6 caracteres').isLength({ min: 6 }),
+        check('password', 'El password debe tener maximo de 20 caracteres').isLength({ max: 20 }),
     ],
     userController.createUser
 );

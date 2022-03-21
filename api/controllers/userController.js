@@ -41,7 +41,7 @@ exports.getUsers = async (req, res) => {
 
 exports.getUser = async (req, res) => {
     try {
-        const user = await User.findById(req.params.id).select('name email register role');
+        const user = await User.findById(req.params.id).select('name email register');
         res.send(user);
     } catch (error) {
         res.status(400).send('Hubo un error en la conexion a la base de datos');
@@ -51,10 +51,10 @@ exports.getUser = async (req, res) => {
 exports.modifyUser = async (req, res) => {
     try {
         const user = await User.findById(req.params.id);
-        if (!req.body.role) {
+        if (!req.body.name) {
             return res.status(400).send('Dato incompleto');
         }
-        user.role = req.body.role;
+        user.name = req.body.name;
         await user.save();
         res.send(user);
     } catch (error) {
