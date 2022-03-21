@@ -2,6 +2,8 @@
 const DOTENV = 'dotenv';
 require(DOTENV).config();
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
 const { default: mongoose } = require('mongoose');
 // const morgan = require('morgan');
 // const cors = require('cors');
@@ -10,6 +12,9 @@ const authRoutes = require('./routes/authRoutes');
 
 // crear el servidor
 const app = express();
+
+app.use(cors());
+app.use(morgan('dev'));
 
 //Conectar a mongodb
 mongoose.connect(process.env.MONGO_URL);
