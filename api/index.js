@@ -1,5 +1,6 @@
 // Importación de módulos de versiones anteriores
-require('dotenv').config();
+const DOTENV = 'dotenv';
+require(DOTENV).config();
 const express = require('express');
 const { default: mongoose } = require('mongoose');
 // const morgan = require('morgan');
@@ -10,18 +11,14 @@ const userRoutes = require('./routes/userRoutes');
 // crear el servidor
 const app = express();
 
-// Permitir acceso, cors
-// app.use(cors());
-// app.use(morgan('dev'));
-
 //Conectar a mongodb
 mongoose.connect(process.env.MONGO_URL);
 
 // Habilitar express.json (tambien se puede usar body parser)
-// app.use(express.json({ extended: true }));
+app.use(express.json({ extended: true }));
 
 // Habilitar urlencoded, para consultas desde postman en este formato
-// app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: true }));
 
 //importar rutas
 app.use('/api/users', userRoutes);
